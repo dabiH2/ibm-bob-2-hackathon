@@ -6,6 +6,9 @@ on:
 jobs:
   gate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,3 +20,55 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: release-evidence, path: sample-app/release-evidence }
+      - name: Post gate summary as PR comment
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let summary = 'Gate summary not found.';
+            const gatePath = 'sample-app/release-evidence/gate.json';
+            if (fs.existsSync(gatePath)) {
+              const gate = JSON.parse(fs.readFileSync(gatePath, 'utf8'));
+              summary = `**CRA Gate: ${gate.gate}**  (${gate.product?.name ?? ''} ${gate.product?.version ?? ''})\n\n${(gate.reasons || []).map(r => '- ' + r).join('\n')}\n\nCounts: \`${JSON.stringify(gate.counts)}\``;
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: summary,
+            });
+
+  bob-headless:
+    runs-on: ubuntu-latest
+    needs: gate
+    env:
+      # BOB_API_KEY is mapped to the env var Bob Shell reads for API key auth.
+      # Docs: https://bob.ibm.com/docs/shell/getting-started/install-and-setup#api-key-authentication
+      BOBSHELL_API_KEY: ${{ secrets.BOB_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check API key is configured
+        id: check
+        run: |
+          if [ -n "$BOBSHELL_API_KEY" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install Bob Shell
+        if: steps.check.outputs.enabled == 'true'
+        run: curl -fsSL https://bob.ibm.com/download/bobshell.sh | bash
+      - name: Run cra-evidence-pack skill (non-interactive)
+        if: steps.check.outputs.enabled == 'true'
+        run: |
+          # Adjust these flags if the Bob Shell CLI changes:
+          # --accept-license  : accept EULA non-interactively on first run
+          # --auth-method api-key : use BOBSHELL_API_KEY instead of browser SSO
+          # --yolo            : allow Bob to write/update files (needed to persist gate evidence)
+          # -p "..."          : the prompt that triggers the skill
+          BOB_CMD='bob --accept-license --auth-method api-key --yolo -p "Use the cra-evidence-pack skill to check whether this release can ship"'
+          eval "$BOB_CMD"
+      - uses: actions/upload-artifact@v4
+        if: steps.check.outputs.enabled == 'true'
+        with: { name: release-evidence-bob, path: sample-app/release-evidence }
