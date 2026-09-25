@@ -1,0 +1,15 @@
+{
+  "_about": "Advisory -> vulnerable symbols. Curated by hand for the demo; during the event the Bob 'advisory-analyst' subagent proposes new entries into .gatekeeper/symbols.local.json for review.",
+  "CVE-2020-14343": {"package": "pyyaml", "symbols": ["yaml.load", "yaml.full_load", "yaml.FullLoader", "yaml.unsafe_load", "yaml.UnsafeLoader"], "note": "Arbitrary code execution when untrusted YAML is loaded with the full/unsafe loader."},
+  "CVE-2018-18074": {"package": "requests", "symbols": ["requests.get", "requests.post", "requests.put", "requests.request", "requests.Session"], "note": "Authorization header kept on HTTPS->HTTP redirect; any outbound call that follows redirects with credentials."},
+  "CVE-2023-32681": {"package": "requests", "symbols": ["requests.get", "requests.post", "requests.put", "requests.request", "requests.Session"], "note": "Proxy-Authorization header leaked to destination on redirect when proxies are configured."},
+  "CVE-2024-35195": {"package": "requests", "symbols": ["requests.Session"], "note": "A Session that first calls with verify=False keeps skipping TLS verification for that host."},
+  "CVE-2024-47081": {"package": "requests", "symbols": ["requests.get", "requests.post", "requests.put", "requests.request", "requests.Session"], "note": ".netrc credentials can be sent to a host chosen by a malicious URL."},
+  "CVE-2026-25645": {"package": "requests", "symbols": ["requests.utils.extract_zipped_paths"], "note": "Insecure temp-file reuse in extract_zipped_paths()."},
+  "CVE-2019-10906": {"package": "jinja2", "symbols": ["jinja2.sandbox.SandboxedEnvironment", "jinja2.sandbox"], "note": "Sandbox escape via str.format."},
+  "CVE-2024-56326": {"package": "jinja2", "symbols": ["jinja2.sandbox.SandboxedEnvironment", "jinja2.sandbox"], "note": "Sandbox breakout via indirect reference to format."},
+  "CVE-2025-27516": {"package": "jinja2", "symbols": ["jinja2.sandbox.SandboxedEnvironment", "jinja2.sandbox"], "note": "Sandbox breakout through the attr filter."},
+  "CVE-2024-22195": {"package": "jinja2", "symbols": ["jinja2.Environment", "jinja2.Template"], "note": "xmlattr filter accepts keys with spaces (attribute injection)."},
+  "CVE-2024-34064": {"package": "jinja2", "symbols": ["jinja2.Environment", "jinja2.Template"], "note": "xmlattr filter accepts keys with / > = (attribute injection)."},
+  "CVE-2020-28493": {"package": "jinja2", "symbols": ["jinja2.Environment", "jinja2.Template", "jinja2.utils.urlize"], "note": "ReDoS in the urlize filter."}
+}

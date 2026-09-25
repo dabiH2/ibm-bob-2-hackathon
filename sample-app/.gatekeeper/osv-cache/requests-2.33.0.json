@@ -1,0 +1,6 @@
+{
+ "package": "requests",
+ "version": "2.33.0",
+ "ecosystem": "PyPI",
+ "vulns": []
+}

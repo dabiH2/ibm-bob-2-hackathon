@@ -1,0 +1,16 @@
+# Article 14 Gatekeeper configuration for this product
+[product]
+name = "fattura-lite"
+version = "1.4.0"
+manufacturer = "Dabii Systems (demo, fictional product)"
+description = "Microservice that validates e-invoices and forwards them to an e-invoicing gateway. Sold to SMEs in IT, DE and ES."
+
+[scan]
+requirements = "requirements.txt"
+source = "app"
+
+[policy]
+block_severity = "HIGH"          # affected + HIGH/CRITICAL blocks the release
+block_under_investigation = true # unmapped advisories must be triaged first
+block_unpinned = true            # SBOM must attest exact versions
+block_overdue_art14 = true       # a missed Art. 14 deadline blocks releases
