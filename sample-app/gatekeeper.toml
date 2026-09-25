@@ -1,7 +1,7 @@
 # Article 14 Gatekeeper configuration for this product
 [product]
 name = "fattura-lite"
-version = "1.4.0"
+version = "1.4.1"
 manufacturer = "Dabii Systems (demo, fictional product)"
 description = "Microservice that validates e-invoices and forwards them to an e-invoicing gateway. Sold to SMEs in IT, DE and ES."
 

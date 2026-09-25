@@ -7,7 +7,7 @@
       "component": "pyyaml 5.3.1",
       "severity": "CRITICAL (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)",
       "summary": "Arbitrary code execution when untrusted YAML is loaded with FullLoader (PyYAML < 5.4).",
-      "aware_at": "2026-09-25T06:05:18Z",
+      "aware_at": "2026-09-25T14:54:06Z",
       "source": "synthetic demo signal: customer SOC reported malicious tenant YAML uploads",
       "member_states": [
         "IT",

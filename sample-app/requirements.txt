@@ -1,4 +1,4 @@
-# fattura-lite 1.4.0 — release candidate
-PyYAML==5.3.1
-requests==2.19.1
+# fattura-lite 1.4.1 — release candidate
+PyYAML==6.0.2
+requests==2.33.0
 Jinja2==2.10
