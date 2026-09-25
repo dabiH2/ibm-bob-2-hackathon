@@ -85,7 +85,9 @@ def run(project: Path, out: Path, offline: bool = False, now: datetime | None = 
         d = art_dir / c.signal["id"]
         d.mkdir(parents=True, exist_ok=True)
         for name, text in art14.drafts(c, by_id.get(c.signal["vulnerability"]), product).items():
-            (d / f"{name}.md").write_text(text, encoding="utf-8")
+            draft_path = d / f"{name}.md"
+            if not draft_path.exists():
+                draft_path.write_text(text, encoding="utf-8")
         clock_rows.append({"signal": c.signal["id"], "vulnerability": c.signal["vulnerability"],
                            "source": c.signal.get("source"), **c.status(now)})
 

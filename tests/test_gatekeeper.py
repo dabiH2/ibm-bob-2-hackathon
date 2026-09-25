@@ -100,6 +100,21 @@ class TestGate(Base):
         res = self.run_gate()
         self.assertEqual(res["gate"], "PASS", res["reasons"])
 
+    def test_art14_draft_not_overwritten_on_rerun(self):
+        """gate.py must preserve existing Art.14 drafts; only create if absent."""
+        # Run once to create the scaffold files
+        self.run_gate()
+        draft = self.proj / "release-evidence" / "art14" / "SIG-2026-0001" / "early_warning.md"
+        self.assertTrue(draft.exists(), "scaffold should have been created on first run")
+        # Write custom text into the file — simulating work done by art14-drafter
+        custom_text = "CUSTOM COMPLETED DRAFT — must survive re-run"
+        draft.write_text(custom_text, encoding="utf-8")
+        # Re-run the gate
+        self.run_gate()
+        # The custom text must be intact
+        self.assertEqual(draft.read_text(encoding="utf-8"), custom_text,
+                         "gate.py must not overwrite an existing Art.14 draft file")
+
     def test_invalid_override_is_rejected(self):
         (self.proj / ".gatekeeper" / "vex_overrides.json").write_text(json.dumps(
             {"CVE-2020-14343": {"status": "not_affected", "justification": "trust me"}}))
