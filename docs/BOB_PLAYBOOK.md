@@ -67,7 +67,8 @@ Run `python sample-app/demo/reset_demo.py` first, then ask:
 **Record your screen.** This is the 90-second core of the video: BLOCK → three subagents working in parallel → PASS, with the Art. 14 clocks visible.
 
 ## T06 — CI (Agent mode, ~3 coins)
-> Extend `.github/workflows/gatekeeper.yml`. On a pull request, upload `release-evidence/` as an artifact and post the gate summary as a PR comment. Add an optional job that runs Bob Shell headless (`bob` non-interactive mode, check the flags in the docs) with the `cra-evidence-pack` skill, but only when a `BOB_API_KEY` secret is configured.
+First run `gh auth refresh -s workflow` (your gh token lacks the `workflow` scope), then:
+> Move `docs/ci/gatekeeper.yml` to `.github/workflows/gatekeeper.yml` and extend it. On a pull request, upload `release-evidence/` as an artifact and post the gate summary as a PR comment. Add an optional job that runs Bob Shell headless (`bob` non-interactive mode, check the flags in the docs) with the `cra-evidence-pack` skill, but only when a `BOB_API_KEY` secret is configured.
 
 ## T07 — Lessons Ledger (Agent mode, ~4 coins)
 > Create skill `lessons-curator`:
