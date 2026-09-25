@@ -20,3 +20,7 @@ sample-app/.gatekeeper/ledger.jsonl
 submission_check.json
 submission/*.mp4
 
+
+.pytest_cache/
+__pycache__/
+sample-app/.gatekeeper/bob_tasks.jsonl
