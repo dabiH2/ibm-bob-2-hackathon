@@ -28,7 +28,7 @@ A Bob hook refuses `git tag` while the gate says BLOCK. A Lessons Ledger records
 
 **Impact on the demo product:**
 - The release went from BLOCK to PASS: before the fix, 5 advisories were affected and the gate was BLOCK; after, the gate reports 6 advisories and 0 affected (gate: PASS, checked 2026-09-25T18:20:47Z).
-- Time to resolution: ⟨m⟩ minutes (not measured).
+- Time to resolution: about 5 minutes from Bob's first gate run to PASS and the release tag (timed second run, `bob_sessions/dabii_task05c_timed_take2.md`).
 - All three Article 14 drafts were produced with deadlines computed to the minute, against ⟨manual baseline⟩ by hand.
 
 **Limits:** Python/pip only; static reachability; the drafts are for a responsible person to submit, not legal advice.
@@ -52,6 +52,6 @@ IBM Bob 2.0 is the core of the solution, not an add-on. Evidence for every task 
 
 - **Submission (T08 — `dabii_task08_submission_text.md`):** Bob drafted this text from `gate.json`, the gate ledger and the task exports in `bob_sessions/`.
 
-**Budget:** 9.58 of 40 Bobcoins across 10 tasks.
+**Budget:** 11.38 of 40 Bobcoins across 11 tasks.
 
 **Division of labour:** the deterministic core was written before kickoff as non-AI scaffolding. All agent behaviour (mode, skills, hooks and subagent orchestration) was built with Bob during the event.
