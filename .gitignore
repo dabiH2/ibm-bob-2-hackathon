@@ -1,0 +1,13 @@
+# secrets — an exposed credential deactivates the hackathon account
+.env
+.env.*
+*.pem
+*.key
+secrets/
+# deps / build
+node_modules/
+__pycache__/
+.venv/
+dist/
+build/
+.DS_Store
