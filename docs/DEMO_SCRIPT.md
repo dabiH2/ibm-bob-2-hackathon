@@ -15,6 +15,6 @@ Before recording, run `python sample-app/demo/reset_demo.py --hours-ago 3`.
 | 2:50–3:00 | End card: repo URL and "Days of evidence work → minutes. Deadlines you can't miss." | "Article 14 Gatekeeper: ship fixes, not fines." |
 
 **Before/after numbers to show on screen.** Measure the "before" column once, by hand, with a stopwatch.
-- Triage of 12 advisories: ⟨manual minutes⟩ → under 1 minute
+- Triage of 12 advisories: every one read by hand → under 1 minute, with file:line evidence
 - Advisories needing human reading: 12 → 5
-- Art. 14 drafts: ⟨manual hours⟩ → generated and completed by Bob in about 5 minutes
+- Art. 14 drafts: typed from a template by hand → generated and completed by Bob in about 5 minutes
