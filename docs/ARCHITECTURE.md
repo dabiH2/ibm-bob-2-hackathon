@@ -36,3 +36,5 @@ flowchart LR
 - **Blocks on uncertainty.** An advisory nobody has mapped yet (`UNKNOWN`) is treated as `under_investigation`, and that blocks the release. The gate never assumes "not affected".
 - **Clocks survive the fix.** Removing the vulnerable version starts the 14-day final-report clock. The 24 h and 72 h obligations stay open until they are marked submitted in `signals.json`.
 - **No dependencies.** It uses only the Python ≥ 3.11 standard library, runs offline from cache, and returns the decision as an exit code, so it fits a git hook, CI or a Bob hook alike.
+
+<!-- ci smoke test -->
