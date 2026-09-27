@@ -3,6 +3,8 @@
 Usage:  python sample-app/demo/reset_demo.py [--hours-ago 3]
 """
 import argparse
+import re
+import shutil
 import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -46,8 +48,15 @@ def main() -> None:
         "member_states": ["IT", "DE", "ES"],
         "sensitivity": "TLP:AMBER until the fix is released",
     }]}, indent=2), encoding="utf-8")
-    for f in ("ledger.jsonl", "vex_overrides.json", "symbols.local.json"):
+    # The gate ledger is kept on purpose: it is the Lessons Ledger's history.
+    for f in ("vex_overrides.json", "symbols.local.json"):
         (gk / f).unlink(missing_ok=True)
+    toml = ROOT / "gatekeeper.toml"
+    toml.write_text(re.sub(r'(?m)^version\s*=\s*"[^"]*"', 'version = "1.4.0"',
+                           toml.read_text(encoding="utf-8"), count=1), encoding="utf-8")
+    drafts = ROOT / "release-evidence" / "art14" / "SIG-2026-0001"
+    if drafts.is_dir():
+        shutil.rmtree(drafts)
     print(f"demo reset: vulnerable RC restored, exploitation signal aware_at={aware:%Y-%m-%d %H:%M} UTC")
 
 

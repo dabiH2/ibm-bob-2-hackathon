@@ -20,6 +20,8 @@ class Base(unittest.TestCase):
         self.proj = self.tmp / "sample-app"
         shutil.copytree(ROOT / "sample-app", self.proj)
         subprocess.run([sys.executable, str(self.proj / "demo" / "reset_demo.py")], check=True, capture_output=True)
+        # reset_demo keeps the real gate history; tests need an isolated, empty ledger.
+        (self.proj / ".gatekeeper" / "ledger.jsonl").unlink(missing_ok=True)
         self.now = datetime.now(timezone.utc)
 
     def tearDown(self):

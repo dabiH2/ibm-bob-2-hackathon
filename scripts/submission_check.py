@@ -41,7 +41,7 @@ def main() -> int:
     # 1. Bob evidence
     shots = sorted((ROOT / "bob_sessions").glob("*.png"))
     check("bob_sessions/ has task-summary PNGs", len(shots) > 0, f"{len(shots)} PNG(s)")
-    bad = [s.name for s in shots if not re.match(r"^[a-z0-9]+_task\d{2}_[a-z0-9_-]+_summary\.png$", s.name)]
+    bad = [s.name for s in shots if not re.match(r"^[a-z0-9]+_task\d{2}[a-z]?_[a-z0-9_-]+_summary\.png$", s.name)]
     check("PNG names follow <member>_taskNN_<name>_summary.png", not bad or None, ", ".join(bad[:5]))
     check("Bob config present (.bob/)", (ROOT / ".bob").is_dir() or None,
           "custom_modes.yaml / skills / settings.json come from playbook T02-T04")

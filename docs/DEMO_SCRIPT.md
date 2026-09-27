@@ -11,10 +11,10 @@ Before recording, run `python sample-app/demo/reset_demo.py --hours-ago 3`.
 | 0:55–1:45 | **Three subagents in parallel**: remediation, advisory analyst, Art. 14 drafter. Split view of their progress | "Bob fans out three subagents at once. One upgrades the dependencies and swaps in safe_load. One triages advisories nobody has mapped yet, and writes a VEX justification with its name on it. One drafts the early warning and the notification from the regulation's own fields. Of twelve advisories, only five actually touch our code. The other seven get a signed 'not affected' instead of a reviewer's afternoon." |
 | 1:45–2:15 | The gate turns **PASS**; the HTML report with the 24 h / 72 h countdowns and the final-report clock starting | "Re-run: PASS. The release unblocks. The legal clock keeps going: the early warning is still due in 21 hours, and fixing the bug has started the 14-day final-report clock. Missing any of these blocks the next release too." |
 | 2:15–2:35 | Lessons Ledger: `.bob/rules/20-lessons.md`, then a new task where Bob uses `safe_load` unprompted | "Every gate run goes into a ledger. Bob turns repeat causes into rules, so the next time someone loads YAML, Bob writes safe code without being told." |
-| 2:35–2:50 | `bob_sessions/` screenshots, CI run on GitHub, the Bobcoin total | "All of it is on IBM Bob 2.0: a custom mode, four skills, hooks, parallel subagents, a regulation PDF read natively, and a headless run in CI, using ⟨N⟩ Bobcoins." |
+| 2:35–2:50 | `bob_sessions/` screenshots, CI run on GitHub, the Bobcoin total | "All of it is on IBM Bob 2.0: a custom mode, four skills, hooks, parallel subagents, a regulation PDF read natively, and a headless run in CI, using about 11 of 40 Bobcoins." |
 | 2:50–3:00 | End card: repo URL and "Days of evidence work → minutes. Deadlines you can't miss." | "Article 14 Gatekeeper: ship fixes, not fines." |
 
 **Before/after numbers to show on screen.** Measure the "before" column once, by hand, with a stopwatch.
-- Triage of 12 advisories: ⟨manual minutes⟩ → under 1 minute
+- Triage of 12 advisories: every one read by hand → under 1 minute, with file:line evidence
 - Advisories needing human reading: 12 → 5
-- Art. 14 drafts: ⟨manual hours⟩ → generated and completed by Bob in ⟨m⟩ minutes
+- Art. 14 drafts: typed from a template by hand → generated and completed by Bob in about 5 minutes
