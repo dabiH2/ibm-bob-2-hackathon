@@ -29,7 +29,7 @@ A Bob hook refuses `git tag` while the gate says BLOCK. A Lessons Ledger records
 **Impact on the demo product:**
 - The release went from BLOCK to PASS: before the fix, 5 advisories were affected and the gate was BLOCK; after, the gate reports 6 advisories and 0 affected (gate: PASS, checked 2026-09-25T18:20:47Z).
 - Time to resolution: about 5 minutes from Bob's first gate run to PASS and the release tag (timed second run, `bob_sessions/dabii_task05c_timed_take2.md`).
-- Both due Article 14 drafts (early warning and notification) were completed with deadlines computed to the minute, and the 14-day final-report clock started at the fix. By hand, each of the 12 advisories must be read and judged, and every report typed from a template.
+- Both due Article 14 drafts (early warning and notification) were completed with deadlines computed to the minute, and the 14-day final-report clock started at the fix. By hand, all 12 advisories must be read and every report typed.
 
 **Limits:** Python/pip only; static reachability; the drafts are for a responsible person to submit, not legal advice.
 
