@@ -14,7 +14,12 @@
         "DE",
         "ES"
       ],
-      "sensitivity": "TLP:AMBER until the fix is released"
+      "sensitivity": "TLP:AMBER until the fix is released",
+      "submitted": {
+        "early_warning": "2026-09-25T18:30:00Z",
+        "notification": "2026-09-26T12:00:00Z"
+      },
+      "submitted_note": "Simulated for the demo: the drafts in release-evidence/art14/SIG-2026-0001/ were marked as sent by the responsible person. reset_demo.py removes this."
     }
   ]
 }
